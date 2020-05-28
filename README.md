@@ -13,3 +13,10 @@ npm install
 ## Start the server
 ```npm start``` 
 Server starts in port 8080 by default. Have fun.
+
+## Team
+
+- Vishal
+- Ashwin
+- Shyam
+- Robin
