@@ -1,0 +1,31 @@
+html
+    head
+        title Example Item 1
+        include libraries
+    body
+        include header
+        canvas(id="myChart", width="400", height="400")
+        script. 
+            var xLabels = [#{xAxis}];
+            var yLabels = [#{yAxis}];
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xLabels,
+                    datasets: [{
+                        label: 'Prices',
+                        data: yLabels,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });

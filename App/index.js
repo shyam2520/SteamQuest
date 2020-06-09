@@ -5,6 +5,7 @@ import session from 'express-session';
 import mongoose from 'mongoose';
 import steam from 'steam-login';
 import dotenv from 'dotenv';
+import fetch from 'node-fetch';
 
 dotenv.config();
 
@@ -25,21 +26,41 @@ app.use(steam.middleware({
     apiKey: process.env.STEAM_API_KEY,
 }));
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
 });
  
-app.get('/authenticate', steam.authenticate(), function(req, res) {
+app.get('/authenticate', steam.authenticate(), (req, res) => {
     res.redirect('/');
 });
  
-app.get('/verify', steam.verify(), function(req, res) {
+app.get('/verify', steam.verify(), (req, res) => {
     res.send(req.user).end();
 });
  
-app.get('/logout', steam.enforceLogin('/'), function(req, res) {
+app.get('/logout', steam.enforceLogin('/'), (req, res) => {
     req.logout();
     res.redirect('/');
+});
+
+app.get('/data', (req, res) => {
+    const opts = {
+        headers: {
+            // Log into steam on browser and get the cookie value of steamLoginSecure and store in below env var
+            // Choppy method, but have to use until workaround is found :/
+            cookie: 'steamLoginSecure=' + process.env.STEAM_LOGIN_SECURE,
+        }
+    };
+    fetch('https://steamcommunity.com/market/pricehistory/?appid=730&market_hash_name=StatTrak%E2%84%A2%20M4A1-S%20|%20Hyper%20Beast%20(Minimal%20Wear)', opts)
+    .then(res => res.json()) // expecting a json response
+    .then(json => {
+        var plt = {};
+        for(var i  = 0; i < json.prices.length; i++) {
+            plt[i] = json.prices[i][1];
+        }
+        console.log(plt);
+        res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt) });
+    });
 });
 
 app.listen(8080, () => {
