@@ -33,6 +33,7 @@
     "express-session": "^1.17.1",
     "mongoose": "^5.9.14",
     "node-fetch": "^2.6.0",
+    "pug": "^3.0.0",
     "steam-login": "^0.1.7"
   },
   "type": "module"

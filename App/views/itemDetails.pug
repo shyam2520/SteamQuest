@@ -4,7 +4,9 @@ html
         include libraries
     body
         include header
-        canvas(id="myChart", width="400", height="400")
+        div(class="container")
+            div(style="position: relative; height:75%;")
+                canvas(id="myChart", width="200", height="200")
         script. 
             var xLabels = [#{xAxis}];
             var yLabels = [#{yAxis}];
@@ -14,16 +16,35 @@ html
                 data: {
                     labels: xLabels,
                     datasets: [{
-                        label: 'Prices',
+                        label: 'Price',
+                        fill: false,
+                        borderColor: "#bae755",
                         data: yLabels,
+                        pointStyle: 'circle',
+                        radius: 0,
                         borderWidth: 1
                     }]
                 },
                 options: {
+                    tooltips: {
+                        callbacks: {
+                            title: function() {}
+                        }
+                    },
+                    maintainAspectRatio: false,
                     scales: {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true
+                            },
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                display: false,
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: false
                             }
                         }]
                     }
