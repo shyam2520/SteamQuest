@@ -6,12 +6,16 @@ import mongoose from 'mongoose';
 import steam from 'steam-login';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
+import path from 'path';
 
 dotenv.config();
 
+const __dirname = path.resolve();
 const app = express();
+
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'pug');
 app.set('views', './views');
 app.use(cookieParser());
@@ -21,23 +25,33 @@ app.use(session({
     saveUninitialized: true,
 }));
 app.use(steam.middleware({
-    realm: 'http://localhost:8080/', 
+    realm: 'http://localhost:8080/',
     verify: 'http://localhost:8080/verify',
     apiKey: process.env.STEAM_API_KEY,
 }));
 
+// app.get('/', (req, res) => {
+//     res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
+// });
+
 app.get('/', (req, res) => {
-    res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
+    if(req.user==null){
+        res.sendFile(__dirname + "/index.html");
+    }
+    else{
+        res.send('hello ' + req.user.username).end();
+    }
 });
- 
+
+
 app.get('/authenticate', steam.authenticate(), (req, res) => {
     res.redirect('/');
 });
- 
+
 app.get('/verify', steam.verify(), (req, res) => {
     res.send(req.user).end();
 });
- 
+
 app.get('/logout', steam.enforceLogin('/'), (req, res) => {
     req.logout();
     res.redirect('/');
@@ -52,17 +66,36 @@ app.get('/data', (req, res) => {
         }
     };
     fetch('https://steamcommunity.com/market/pricehistory/?appid=730&market_hash_name=StatTrak%E2%84%A2%20M4A1-S%20|%20Hyper%20Beast%20(Minimal%20Wear)', opts)
-    .then(res => res.json()) // expecting a json response
-    .then(json => {
-        var plt = {};
-        for(var i  = 0; i < json.prices.length; i++) {
-            plt[i] = json.prices[i][1];
-        }
-        console.log(plt);
-        res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt) });
-    });
+        .then(res => res.json()) // expecting a json response
+        .then(json => {
+            var plt = {};
+            for (var i = 0; i < json.prices.length; i++) {
+                plt[i] = json.prices[i][1];
+            }
+            console.log(plt);
+            res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt) });
+        });
 });
 
-app.listen(8080, () => {
-    console.log("Server running at port 8080.")
+// Robin additions:
+
+app.get("/login", function (req, res) {
+    res.send("I haven't Programmed that path yet");
+})
+
+app.get("/faq", function (req, res) {
+    res.send("I haven't Programmed that path yet");
+})
+
+app.get("/tc", function (req, res) {
+    res.send("I haven't Programmed that path yet");
+})
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8080;
+}
+
+app.listen(port, function () {
+    console.log("Server has started successfully at port 8080");
 });
