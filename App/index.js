@@ -36,10 +36,10 @@ app.use(steam.middleware({
 
 app.get('/', (req, res) => {
     if(req.user==null){
-        res.sendFile(__dirname + "/index.html");
+        res.render("home");
     }
     else{
-        res.send('hello ' + req.user.username).end();
+        res.render("home", { username: req.user.username });
     }
 });
 
@@ -49,7 +49,8 @@ app.get('/authenticate', steam.authenticate(), (req, res) => {
 });
 
 app.get('/verify', steam.verify(), (req, res) => {
-    res.send(req.user).end();
+    // res.send(req.user).end(); <<-- This has the full User object we get as response from steam. Use wisely
+    res.redirect('/');
 });
 
 app.get('/logout', steam.enforceLogin('/'), (req, res) => {
