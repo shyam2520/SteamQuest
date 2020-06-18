@@ -24,8 +24,8 @@ app.use(session({
     saveUninitialized: true,
 }));
 app.use(steam.middleware({
-    realm: 'http://localhost:8080/',
-    verify: 'http://localhost:8080/verify',
+    realm: process.env.REALM,
+    verify: process.env.REALM + 'verify',
     apiKey: process.env.STEAM_API_KEY,
 }));
 
