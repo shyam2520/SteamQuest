@@ -2,10 +2,9 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-import mongoose from 'mongoose';
 import steam from 'steam-login';
 import dotenv from 'dotenv';
-import fetch from 'node-fetch';
+import axios from 'axios';
 import path from 'path';
 
 dotenv.config();
@@ -66,16 +65,18 @@ app.get('/data', (req, res) => {
             cookie: 'steamLoginSecure=' + process.env.STEAM_LOGIN_SECURE,
         }
     };
-    fetch('https://steamcommunity.com/market/pricehistory/?appid=730&market_hash_name=StatTrak%E2%84%A2%20M4A1-S%20|%20Hyper%20Beast%20(Minimal%20Wear)', opts)
-        .then(res => res.json()) // expecting a json response
-        .then(json => {
+    axios.get('https://steamcommunity.com/market/pricehistory/?appid=730&market_hash_name=StatTrak%E2%84%A2%20M4A1-S%20|%20Hyper%20Beast%20(Minimal%20Wear)', opts)
+        .then(response => {
+            console.log(response.data);
+            var json = response.data;
             var plt = {};
             for (var i = 0; i < json.prices.length; i++) {
                 plt[i] = json.prices[i][1];
             }
             console.log(plt);
             res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt) });
-        });
+        })
+        .catch(err => console.log(err));
 });
 
 // Robin additions:
