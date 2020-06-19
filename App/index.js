@@ -62,7 +62,7 @@ app.get('/data', (req, res) => {
         headers: {
             // Log into steam on browser and get the cookie value of steamLoginSecure and store in below env var
             // Choppy method, but have to use until workaround is found :/
-            cookie: 'steamLoginSecure=' + process.env.STEAM_LOGIN_SECURE,
+            cookie: 'steamLoginSecure=' + process.env.STEAM_LOGIN_SECURE + ';steamMachineAuth76561198153616203=' + process.env.STEAM_MACHINE_AUTH,
         }
     };
     axios.get('https://steamcommunity.com/market/pricehistory/?appid=730&market_hash_name=StatTrak%E2%84%A2%20M4A1-S%20|%20Hyper%20Beast%20(Minimal%20Wear)', opts)
