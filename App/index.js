@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
         res.render("home");
     }
     else{
-        res.render("home", { username: req.user.username });
+        res.render("search", { username: req.user.username});
     }
 });
 
@@ -50,6 +50,7 @@ app.get('/authenticate', steam.authenticate(), (req, res) => {
 app.get('/verify', steam.verify(), (req, res) => {
     // res.send(req.user).end(); <<-- This has the full User object we get as response from steam. Use wisely
     res.redirect('/');
+    // console.log(req.user);
 });
 
 app.get('/logout', steam.enforceLogin('/'), (req, res) => {

@@ -1,0 +1,104 @@
+html
+  head
+    include libraries
+    link(rel='stylesheet', href='css/search.css')
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU' crossorigin='anonymous')
+  body
+    header
+      .header-area(style='background-color: black;')
+        #sticky-header.main-header-area
+          .container-fluid.p-0
+            .row.align-items-center.no-gutters
+              .col-xl-2.col-lg-2
+                .logo-img
+                  a(href='/')
+                    img(src='images/logo.png', alt='', width='150', height='30')
+              .col-xl-8.col-lg-8
+                .main-menu.d-none.d-lg-block.text-center
+                  nav
+                    ul#navigation
+                      li
+                        a.active(href='/') home
+                      li
+                        a(href='/#servicestag') services
+                      li
+                        a(href='/#tutorial') Video Tutorial
+                      li
+                        a(href='/#team') The Team
+                      li
+                        a(href='/#contactus') Contact
+              .col-lg-2.d-none.d-lg-block
+                .log_chat_area.d-flex.align-items-end
+            .col-12
+              .mobile_menu.d-block.d-lg-none
+    br
+    br
+    br
+    .jumbotron.jumbotron-fluid(style='background-color:white;text-align:center;')
+      .container
+        h1.display-4
+            span Hello #{ username }
+        p.lead
+          | Use the Search Bar to Predict the value of your item.
+    
+    span
+        br
+        br
+        br
+        br
+        br
+        br
+        br  
+        form(action='/')
+            
+            input(type='search' placeholder='Search from over 1000s of items')
+            i.fa.fa-search
+
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br    
+
+
+    footer.footer
+      .footer_top
+        .container
+          .row.align-items-center
+            .col-lg-2.col-md-3
+              .footer_logo.wow.fadeInRight(data-wow-duration='1s', data-wow-delay='.3s')
+                a(href='index.html')
+                  img(src='img/logo.png', alt='')
+            .col-xl-12.col-lg-12.col-md-9.col-sm-4(style='text-align: center;')
+              .menu_links
+                ul
+                  li
+                    a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.2s', href='/#about') About
+                  li
+                    a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.4s', href='/#servicestag') Services
+                  li
+                    a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.5s', href='/#contactus') Contact Us
+                  li
+                    a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.6s', href='/faq') FAQS
+                  li
+                    a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.7s', href='/tc') Terms And Conditions
+            // This section is for if we get popular and create Social Media pages for the website
+      .copy-right_text
+        .container
+          .footer_border
+          .row
+            .col-xl-12
+              p.copy_right.text-center.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='1.3s')
+                | Copyright ©
+                script.
+                  document.write(new Date().getFullYear());
+                |  All rights reserved
+
+include scripts
+
+
