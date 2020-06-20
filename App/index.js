@@ -81,17 +81,17 @@ app.get('/data', (req, res) => {
 
 // Robin additions:
 
-app.get("/login", function (req, res) {
-    res.send("I haven't Programmed that path yet");
-})
-
 app.get("/faq", function (req, res) {
-    res.send("I haven't Programmed that path yet");
+    res.render("faq");
 })
 
 app.get("/tc", function (req, res) {
-    res.send("I haven't Programmed that path yet");
+    res.render("tc");
 })
+
+app.get('*', function(req, res){
+    res.render("404");
+  });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
