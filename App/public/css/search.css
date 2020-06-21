@@ -1,10 +1,10 @@
-body {
+/* body {
     padding: 0;
     margin: 0;
     height: 100vh;
     width: 100%;
     background: #1f1f1f;
-}
+} */
 
 form{
     position: relative;
@@ -52,7 +52,7 @@ input{
 }
 
 form:hover{
-    width: 500px;
+    width: 110%;
     cursor: pointer;
 }
 

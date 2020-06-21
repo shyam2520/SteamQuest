@@ -38,8 +38,7 @@ html
               .mobile_menu.d-block.d-lg-none
     br
     br
-    br
-
+    br  
     .jumbotron.jumbotron-fluid(style='background-color:white;text-align:center;')
       .container
         h1.display-4
@@ -50,35 +49,81 @@ html
         p.lead
           | Use the Search Bar to Predict the value of your item.
     
-    span
-        br
-        br
-        br
-        br
-        br
-        br
-        br  
-        form(action='/data')
-            
-            input(type='search' placeholder='Search from over 1000s of items' name='search-request' id='search-request')
-            button(type='submit' style='background:transparent; border:none; color:transparent;')
-              i.fa.fa-search
-        
-        br
-        br
-        br
-        br
-        br
-        br
-        br 
+    //- span
+    //-     br
+    //-     br
+    //-     br
+    //-     br
+    //-     br
+    //-     br
+    //-     br
 
-        br
-        br
-        br
-        br
-        br
-        br
-        br  
+
+    .service_area(style='background-color:black;text-align:center;')
+      .container
+
+        .row
+          .col-xl-4.col-lg-4.col-md-4
+            .single_service.text-center.wow.fadeInLeft(data-wow-duration='1.2s', data-wow-delay='.4s')
+              .icon
+                img(src='images/services/pubg_alt.png', alt='', width='100', height='100')
+              h3(style='color:white;text-align:center;') PUBG
+              p Search for your item from over 340 items and estimate it's future value using our simple tool.
+                br
+                br
+                br
+                br
+                form(action='/data')
+
+                    input(type='search' name='search-request-pubg' id='search-request-pubg' placeholder='Search PUBG item')
+                    button(type='submit' style='background:transparent; border:none; color:transparent;')
+                      i.fa.fa-search
+          .col-xl-4.col-md-4
+            .single_service.text-center.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.3s')
+              .icon
+                img(src='images/services/csgo_alt.png', alt='', width='100', height='100')
+              h3(style='color:white;text-align:center;') CS:GO
+              p Search for your item from over 15,000 items and estimate it's future value using our simple tool.
+                br
+                br
+                br
+                br
+                form(action='/data')
+
+                    input(type='search' name='search-request-cs' id='search-request-cs' placeholder='Search CS:GO item')
+                    button(type='submit' style='background:transparent; border:none; color:transparent;')
+                      i.fa.fa-search
+          .col-xl-4.col-md-4
+            .single_service.text-center.wow.fadeInRight(data-wow-duration='1.2s', data-wow-delay='.4s')
+              .icon
+                img(src='images/services/dota_alt.png', alt='', width='100', height='100')
+              h3(style='color:white;text-align:center;') Dota 2
+              p Search for your item from over 32,000 items and estimate it's future value using our simple tool.
+               br
+               br
+               br
+               br
+               form(action='/data')
+
+                    input(type='search' name='search-request-dota' id='search-request-dota' placeholder='Search Dota 2 item')
+                    button(type='submit' style='background:transparent; border:none; color:transparent;')
+                      i.fa.fa-search
+
+        //- br
+        //- br
+        //- br
+        //- br
+        //- br
+        //- br
+        //- br 
+
+        //- br
+        //- br
+        //- br
+        //- br
+        //- br
+        //- br
+        //- br  
 
 
     footer.footer
@@ -115,5 +160,6 @@ html
                 |  All rights reserved
 
 include scripts
+
 
 
