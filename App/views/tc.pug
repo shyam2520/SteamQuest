@@ -7,7 +7,7 @@ html
     body
     header
       .header-area(style='background-color: black;')
-        .main-header-area
+        #sticky-header.main-header-area
           .container-fluid.p-0
             .row.align-items-center.no-gutters
               .col-xl-2.col-lg-2
@@ -31,6 +31,9 @@ html
                       if username
                         li
                           a(href='/logout') Logout
+                      else
+                        li
+                          a(href='/authenticate') Login 
               .col-lg-2.d-none.d-lg-block
                 .log_chat_area.d-flex.align-items-end
             .col-12
