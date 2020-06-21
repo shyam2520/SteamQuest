@@ -13,6 +13,7 @@ cd App
 ```
 npm install
 ```
+**Optional:** Clone [this](https://github.com/Nightmare99/Vapourizer) repo for fetching the steam item price histories. 
 
 ## Start the server
 ```npm start``` 
@@ -27,4 +28,4 @@ Server starts in port 8080 by default. Have fun.
 
 ## Deployed at
 
-https://steam-quest.herokuapp.com
+https://steamq.herokuapp.com
