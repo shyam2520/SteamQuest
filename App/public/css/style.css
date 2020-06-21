@@ -1247,7 +1247,7 @@ h3 {
 
 /* line 1 SteamQuest/HTML/scss/_about.scss */
 .about_area {
-  background: #1F1F1F;
+  background: black;
   position: relative;
 }
 
@@ -1569,7 +1569,7 @@ h3 {
 /* line 2 SteamQuest/HTML/scss/_tesmonial.scss */
 .testimonial_area {
   padding: 160px 0;
-  background-image: url(../images/testmonial/banner.jpeg);
+  background-image: url(../images/testmonial/banner.jpg);
   position: relative;
   z-index: 0;
   background-size: cover;
@@ -1927,6 +1927,7 @@ h3 {
 /* line 1 SteamQuest/HTML/scss/_work.scss */
 .how_we_work_area {
   position: relative;
+  background-color: black;
 }
 
 /* line 3 SteamQuest/HTML/scss/_work.scss */
@@ -1975,12 +1976,12 @@ h3 {
   right: 0;
   top: 0;
   height: 100%;
-  background-image: url(../images/tutorial/video-tutorial-image.jpg);
+  background-image: url(../images/tutorial/video-tutorial-image.png);
   background-size: cover;
   background-position: center center;
-  -webkit-border-radius: 20px 0 0 20px;
+  /* -webkit-border-radius: 20px 0 0 20px;
   -moz-border-radius: 20px 0 0 20px;
-  border-radius: 20px 0 0 20px;
+  border-radius: 20px 0 0 20px; */
 }
 
 @media (max-width: 767px) {
@@ -2020,7 +2021,7 @@ h3 {
 .how_we_work_area .work_info .section_title .mid_text {
   font-size: 18px;
   font-family: "Muli", sans-serif;
-  color: #1F1F1F;
+  color: #f7f0f0;
   font-weight: 400;
   margin-bottom: 25px;
 }
@@ -2028,7 +2029,7 @@ h3 {
 /* line 55 SteamQuest/HTML/scss/_work.scss */
 .how_we_work_area .work_info .section_title .last_p {
   font-size: 16px;
-  color: #707070;
+  color: #aaaaaa;
   font-weight: 400;
 }
 
@@ -2055,7 +2056,7 @@ h3 {
 /* line 76 SteamQuest/HTML/scss/_work.scss */
 .how_we_work_area .work_info .video_watch span {
   font-size: 20px;
-  color: #1F1F1F;
+  color: #ffffff;
   font-weight: 400;
   font-family: "Roboto", sans-serif;
   margin-left: 20px;
