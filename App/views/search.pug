@@ -1,3 +1,5 @@
+//- - var img = #{ profile } Not working pls fix
+- var img = 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/15/152076fbeadfc8fa0652164e7b886ef74d81ec87_full.jpg';
 html
   head
     include libraries
@@ -34,10 +36,14 @@ html
     br
     br
     br
+
     .jumbotron.jumbotron-fluid(style='background-color:white;text-align:center;')
       .container
         h1.display-4
             span Hello #{ username }
+        img.rounded-circle(src=img height='100' width='100')
+        br
+        br
         p.lead
           | Use the Search Bar to Predict the value of your item.
     
@@ -49,10 +55,19 @@ html
         br
         br
         br  
-        form(action='/')
+        form(action='/data')
             
-            input(type='search' placeholder='Search from over 1000s of items')
-            i.fa.fa-search
+            input(type='search' placeholder='Search from over 1000s of items' name='search-request' id='search-request' value='search-request')
+            button(type='submit' style='background:transparent; border:none; color:transparent;')
+              i.fa.fa-search
+        
+        br
+        br
+        br
+        br
+        br
+        br
+        br 
 
         br
         br
@@ -60,10 +75,7 @@ html
         br
         br
         br
-        br
-        br
-        br
-        br    
+        br  
 
 
     footer.footer

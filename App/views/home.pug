@@ -42,11 +42,18 @@ html
             .col-lg-10.col-md-10
               .slider_text
                 h3.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.1s')
-                  | You can use our services
-                  | to predict the value of
-                  | your Steam Inventory item in future.
+                  if !username
+                    | You can use our services
+                    | to predict the value of
+                    | your Steam Inventory 
+                    | item in the future.
+                  else
+                    | Hello #{ username }  
                 if username
-                    span Hello #{ username }
+                    a.steambutton(href='/search')
+                     span Search
+                     .icon
+                        i.fa.fa-search
                     
                 else
                     a.steambutton(href='/authenticate')

@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
         res.render("home");
     }
     else{
-        res.render("search", { username: req.user.username});
+        res.render("home", { username: req.user.username});
     }
 });
 
@@ -49,7 +49,7 @@ app.get('/authenticate', steam.authenticate(), (req, res) => {
 
 app.get('/verify', steam.verify(), (req, res) => {
     // res.send(req.user).end(); <<-- This has the full User object we get as response from steam. Use wisely
-    res.redirect('/');
+    res.redirect('search');
     // console.log(req.user);
 });
 
@@ -88,6 +88,10 @@ app.get("/faq", function (req, res) {
 
 app.get("/tc", function (req, res) {
     res.render("tc");
+})
+
+app.get("/search", function (req, res) {
+    res.render("search", { username: req.user.username,profile:req.user.avatar.large});
 })
 
 app.get('*', function(req, res){
