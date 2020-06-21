@@ -5,7 +5,42 @@ html
         script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css")
     body
-        include header
+        header
+            .header-area(style='background-color: black;')
+              .main-header-area
+                .container-fluid.p-0
+                  .row.align-items-center.no-gutters
+                    .col-xl-2.col-lg-2
+                      .logo-img
+                        a(href='/')
+                          img(src='images/logo.png', alt='', width='150', height='30')
+                    .col-xl-8.col-lg-8
+                      .main-menu.d-none.d-lg-block.text-center
+                        nav
+                          ul#navigation
+                            li
+                              a.active(href='/') home
+                            li
+                              a(href='/#servicestag') services
+                            li
+                              a(href='/#tutorial') Video Tutorial
+                            li
+                              a(href='/#team') The Team
+                            li
+                              a(href='/#contactus') Contact
+                            if username
+                              li
+                                a(href='/logout') Logout
+                    .col-lg-2.d-none.d-lg-block
+                      .log_chat_area.d-flex.align-items-end
+                  .col-12
+                    .mobile_menu.d-block.d-lg-none
+        br
+        br
+        br
+        br
+        br
+        br           
         div(class="container")
             div(style="position: relative; height:75%;")
                 canvas(id="myChart", width="200", height="200")
@@ -52,3 +87,43 @@ html
                     }
                 }
             });
+
+        br
+        br
+        br
+        br
+        br
+        footer.footer
+            .footer_top
+              .container
+                .row.align-items-center
+                  .col-lg-2.col-md-3
+                    .footer_logo.wow.fadeInRight(data-wow-duration='1s', data-wow-delay='.3s')
+                      a(href='index.html')
+                        img(src='img/logo.png', alt='')
+                  .col-xl-12.col-lg-12.col-md-9.col-sm-4(style='text-align: center;')
+                    .menu_links
+                      ul
+                        li
+                          a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.2s', href='/#about') About
+                        li
+                          a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.4s', href='/#servicestag') Services
+                        li
+                          a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.5s', href='/#contactus') Contact Us
+                        li
+                          a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.6s', href='/faq') FAQS
+                        li
+                          a.wow.fadeInDown(data-wow-duration='1s', data-wow-delay='.7s', href='/tc') Terms And Conditions
+                  // This section is for if we get popular and create Social Media pages for the website
+            .copy-right_text
+              .container
+                .footer_border
+                .row
+                  .col-xl-12
+                    p.copy_right.text-center.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='1.3s')
+                      | Copyright ©
+                      script.
+                        document.write(new Date().getFullYear());
+                      |  All rights reserved
+
+include scripts

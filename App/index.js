@@ -75,7 +75,7 @@ app.get('/data', (req, res) => {
                 plt[i] = json.prices[i][1];
             }
             console.log(plt);
-            res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt) });
+            res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt),username: req.user.username });
         })
         .catch(err => console.log(err));
 });
