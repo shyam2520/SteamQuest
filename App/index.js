@@ -83,19 +83,39 @@ app.get('/data', (req, res) => {
 // Robin additions:
 
 app.get("/faq", function (req, res) {
-    res.render("faq");
+    if(req.user==null){
+        res.render("faq");
+    }
+    else{
+        res.render("faq", { username: req.user.username});
+    }
 })
 
 app.get("/tc", function (req, res) {
-    res.render("tc");
+    if(req.user==null){
+        res.render("tc");
+    }
+    else{
+        res.render("tc", { username: req.user.username});
+    }
 })
 
 app.get("/search", function (req, res) {
+    if(req.user==null){
+        res.send("Login First");
+    }
+    else{
     res.render("search", { username: req.user.username,profile:req.user.avatar.large});
+    }
 })
 
 app.get('*', function(req, res){
-    res.render("404");
+    if(req.user==null){
+        res.render("404");
+    }
+    else{
+        res.render("404", { username: req.user.username});
+    }
   });
 
 let port = process.env.PORT;
