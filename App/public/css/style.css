@@ -331,7 +331,7 @@ h3 {
 /* line 275 SteamQuest/HTML/scss/theme-default.scss */
 .owl-carousel:hover .owl-nav div:hover {
   color: #fff;
-  background: #615CFD;
+  background: #27b5c2;
   border: 1px solid transparent;
 }
 
@@ -365,18 +365,18 @@ h3 {
   font-size: 16px;
   font-weight: 400;
   border: 0;
-  border: 1px solid #615CFD;
+  border: 1px solid #27b5c2;
   text-align: center;
-  color: #615CFD !important;
+  color: #27b5c2 !important;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 /* line 16 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn:hover {
-  background: #615CFD;
+  background: #27b5c2;
   color: #fff !important;
-  border: 1px solid #615CFD;
+  border: 1px solid #27b5c2;
 }
 
 /* line 21 SteamQuest/HTML/scss/_btn.scss */
@@ -391,7 +391,7 @@ h3 {
 
 /* line 28 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn3 {
-  background: #615CFD;
+  background: #27b5c2;
   color: #fff;
   display: inline-block;
   padding: 12px 33px;
@@ -415,8 +415,8 @@ h3 {
 
 /* line 45 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
-  border: 1px solid #615CFD;
-  color: #615CFD !important;
+  border: 1px solid #27b5c2;
+  color: #27b5c2 !important;
   background: transparent;
 }
 
@@ -432,7 +432,7 @@ h3 {
 
 /* line 57 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn4 {
-  background: #615CFD;
+  background: #27b5c2;
   color: #fff;
   display: inline-block;
   padding: 14px 27px;
@@ -456,7 +456,7 @@ h3 {
 
 /* line 76 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn4:hover {
-  background: #615CFD;
+  background: #27b5c2;
   color: #fff !important;
 }
 
@@ -518,14 +518,14 @@ h3 {
 
 /* line 122 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn3-green-2 {
-  color: #615CFD !important;
+  color: #27b5c2 !important;
   display: inline-block;
   padding: 14px 31px;
   font-family: "Muli", sans-serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
-  border: 1px solid #615CFD;
+  border: 1px solid #27b5c2;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -541,7 +541,7 @@ h3 {
 
 /* line 138 SteamQuest/HTML/scss/_btn.scss */
 .boxed-btn3-green-2:hover {
-  background: #615CFD;
+  background: #27b5c2;
   color: #fff !important;
   border: 1px solid transparent;
 }
@@ -618,8 +618,8 @@ h3 {
 .line_btn {
   display: inline-block;
   font-size: 15px;
-  color: #615CFD;
-  border: 1px solid #615CFD;
+  color: #27b5c2;
+  border: 1px solid #27b5c2;
   text-transform: capitalize;
   padding: 13px 34px;
   font-weight: 600;
@@ -627,7 +627,7 @@ h3 {
 
 /* line 202 SteamQuest/HTML/scss/_btn.scss */
 .line_btn:hover {
-  background: #615CFD;
+  background: #27b5c2;
   color: #fff;
 }
 
@@ -637,7 +637,7 @@ h3 {
   z-index: 3;
   font-size: 14px;
   font-weight: 500;
-  color: #615CFD;
+  color: #27b5c2;
   text-transform: capitalize;
   margin-bottom: 19px;
   display: block;
@@ -992,7 +992,7 @@ h3 {
 
 /* line 90 SteamQuest/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a:hover {
-  color: #615CFD;
+  color: #27b5c2;
 }
 
 /* line 94 SteamQuest/HTML/scss/_header.scss */
@@ -1038,7 +1038,7 @@ h3 {
 
 /* line 119 SteamQuest/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li .submenu li:hover a {
-  color: #615CFD;
+  color: #27b5c2;
 }
 
 /* line 124 SteamQuest/HTML/scss/_header.scss */
@@ -1117,7 +1117,7 @@ h3 {
   content: "";
   height: 3px;
   width: 100%;
-  background: #615CFD;
+  background: #27b5c2;
   bottom: 0;
   left: 0;
 }
@@ -1352,7 +1352,7 @@ h3 {
 
 /* line 64 SteamQuest/HTML/scss/_about.scss */
 .about_area .section_title .last_text {
-  color: #C9C9C9;
+  color:#27b5c2;
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 44px;
@@ -1465,7 +1465,7 @@ h3 {
 
 /* line 43 SteamQuest/HTML/scss/_footer.scss */
 .footer .footer_top .menu_links ul li a:hover {
-  color: #615CFD;
+  color: #27b5c2;
 }
 
 /* line 51 SteamQuest/HTML/scss/_footer.scss */
@@ -1497,7 +1497,7 @@ h3 {
 
 /* line 66 SteamQuest/HTML/scss/_footer.scss */
 .footer .copy-right_text .copy_right a {
-  color: #615CFD;
+  color: #27b5c2;
 }
 
 /* line 71 SteamQuest/HTML/scss/_footer.scss */
@@ -1548,8 +1548,8 @@ h3 {
 /* line 102 SteamQuest/HTML/scss/_footer.scss */
 .footer .socail_links ul li a:hover {
   color: #fff !important;
-  background: #615CFD;
-  border: 1px solid #615CFD;
+  background: #27b5c2;
+  border: 1px solid #27b5c2;
 }
 
 
@@ -1728,7 +1728,7 @@ h3 {
 
 /* line 40 SteamQuest/HTML/scss/_service.scss */
 .service_area .single_service:hover {
-  border: 2px solid #615CFD;
+  border: 2px solid #27b5c2;
 }
 
 /* line 2 SteamQuest/HTML/scss/_team.scss */
@@ -1825,15 +1825,15 @@ h3 {
   text-align: center;
   font-size: 14px;
   color: #fff;
-  border: 1px solid #615CFD;
+  border: 1px solid #27b5c2;
   display: inline-block;
-  background: #615CFD;
+  background: #27b5c2;
 }
 
 /* line 57 SteamQuest/HTML/scss/_team.scss */
 .team_area .single_team .team_thumb .team_hover .hover_inner ul li a:hover {
-  background: #615CFD;
-  border: 1px solid #615CFD;
+  background: #27b5c2;
+  border: 1px solid #27b5c2;
   color: #fff;
 }
 
@@ -2045,7 +2045,7 @@ h3 {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  background: #615CFD;
+  background: #27b5c2;
   font-size: 14px;
   text-align: center;
   line-height: 60px;
@@ -2132,7 +2132,7 @@ h6 {
 
 .steambutton {
   display: block;
-  background-color: #6f9f31;
+  background-color: #27b5c2;
   width: 270px;
   height: 50px;
   line-height: 50px;
@@ -2200,7 +2200,7 @@ h6 {
 
 .steambutton span:after {
   content: '';
-  background-color: #5d8628;
+  background-color: rgb(17, 120, 138);
   width: 2px;
   height: 70%;
   position: absolute;

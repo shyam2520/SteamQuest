@@ -38,10 +38,17 @@ html
         br
         br
         br
-        br
-        br
-        br           
-        div(class="container")
+        .jumbotron.jumbotron-fluid.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.1s',style='background-color:white;text-align:center;')
+          .container
+            h1.display-4 Item Name: Get item name
+            img.rounded-circle(src="https://www.wpclipart.com/office/sale_promo/new_item/new_item.png" height='100' width='100')
+            p.lead
+              | Get item description here if possible else leave blank
+            
+
+        hr
+        h1.display-4.wow.fadeInUp(data-wow-duration='1s', data-wow-delay='.1s',style="padding-bottom: 5px;text-align:center;") Price History Graph          
+        div.container.wow.fadeInLeft(data-wow-duration='1.2s', data-wow-delay='.4s',style="background-color:black;")
             div(style="position: relative; height:75%;")
                 canvas(id="myChart", width="200", height="200")
         script. 
@@ -55,7 +62,7 @@ html
                     datasets: [{
                         label: 'Price',
                         fill: false,
-                        borderColor: "#bae755",
+                        borderColor: "#27b5c2",
                         data: yLabels,
                         pointStyle: 'circle',
                         radius: 0,
@@ -87,7 +94,8 @@ html
                     }
                 }
             });
-
+        hr
+        h1.display-4.wow.fadeInLeft(data-wow-duration='1.2s', data-wow-delay='.4s',style="padding-bottom: 5px;text-align:center;") Prediction:
         br
         br
         br
