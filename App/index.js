@@ -6,9 +6,39 @@ import steam from 'steam-login';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import path from 'path';
+import mongoose from 'mongoose';
+import NodeCache from 'node-cache';
 
 dotenv.config();
+mongoose.connect(process.env.MONGO_URL, { 
+    useNewUrlParser: true, 
+    useFindAndModify: false,
+    useUnifiedTopology: true 
+});
+const schema = mongoose.Schema({
+    gameName: String,
+    data: Object
+}, { strict: false });
+const priceHistory = mongoose.model('Data', schema);
 
+const cache = new NodeCache({ stdTTL: 6 * 60 * 60, checkperiod: 10, deleteOnExpire: false });
+cache.on( "expired", function( key, value ){ // once cache gets outdated, we must update it
+    console.log(key + ' has expired in cache, fetching values again...');
+    const query = priceHistory.find({gameName: key});
+    query.exec(function (err, docs) {
+        if (err) console.log(err);
+        else {
+            addToCache(docs[0].gameName, docs[0].data);
+        }
+    });
+});
+const addToCache = (key, value) => {
+    return new Promise(resolve => {
+        console.log('Loading ' + key + ' data to cache...');
+        cache.set(key, value);
+        console.log('Done: ' + key);
+    });
+}
 const __dirname = path.resolve();
 const app = express();
 
@@ -38,7 +68,7 @@ app.get('/', (req, res) => {
         res.render("home");
     }
     else{
-        res.render("home", { username: req.user.username});
+        res.render("home", {username: req.user.username});
     }
 });
 
@@ -125,4 +155,15 @@ if (port == null || port == "") {
 
 app.listen(port, function () {
     console.log("Server has started successfully at port 8080");
+    const query = priceHistory.find();
+    query.exec(function (err, docs) {
+        if (err) console.log(err);
+        else {
+            for (var doc of docs) {
+                if (doc.gameName !== null){
+                    addToCache(doc.gameName, doc.data);
+                } 
+            }
+        }
+    });
 });
