@@ -4,9 +4,9 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import steam from 'steam-login';
 import dotenv from 'dotenv';
-import axios from 'axios';
 import path from 'path';
 import mongoose from 'mongoose';
+import gridfs from 'gridfs-stream';
 import NodeCache from 'node-cache';
 
 dotenv.config();
@@ -15,23 +15,36 @@ mongoose.connect(process.env.MONGO_URL, {
     useFindAndModify: false,
     useUnifiedTopology: true 
 });
-const schema = mongoose.Schema({
-    gameName: String,
-    data: Object
-}, { strict: false });
-const priceHistory = mongoose.model('Data', schema);
+mongoose.Promise = global.Promise;
+gridfs.mongo = mongoose.mongo;
+var connection = mongoose.connection;
+connection.once('open', function callback () {
+    readFromDB('PUBG');
+});
+
+const readFromDB = (name) => {
+    var buffer = "";
+    var gfs = gridfs(connection.db);
+    var readStream = gfs.createReadStream({ 
+        _id: name,
+        root: 'steamData',
+    });
+    readStream.on("data", function (chunk) {
+        buffer += chunk;
+    });
+    // dump contents to console when complete
+    readStream.on("end", function () {
+        console.log("Successfully read GridFS file");
+        addToCache(name, JSON.parse(buffer));
+    });
+}
 
 const cache = new NodeCache({ stdTTL: 6 * 60 * 60, checkperiod: 10, deleteOnExpire: false });
 cache.on( "expired", function( key, value ){ // once cache gets outdated, we must update it
     console.log(key + ' has expired in cache, fetching values again...');
-    const query = priceHistory.find({gameName: key});
-    query.exec(function (err, docs) {
-        if (err) console.log(err);
-        else {
-            addToCache(docs[0].gameName, docs[0].data);
-        }
-    });
+    readFromDB('PUBG');
 });
+
 const addToCache = (key, value) => {
     return new Promise(resolve => {
         console.log('Loading ' + key + ' data to cache...');
@@ -89,25 +102,24 @@ app.get('/logout', steam.enforceLogin('/'), (req, res) => {
 });
 
 app.get('/data', (req, res) => {
-    const opts = {
-        headers: {
-            // Log into steam on browser and get the cookie value of steamLoginSecure and store in below env var
-            // Choppy method, but have to use until workaround is found :/
-            cookie: 'steamLoginSecure=' + process.env.STEAM_LOGIN_SECURE + ';steamMachineAuth76561198153616203=' + process.env.STEAM_MACHINE_AUTH,
-        }
-    };
-    axios.get('https://steamcommunity.com/market/pricehistory/?appid=730&market_hash_name=StatTrak%E2%84%A2%20M4A1-S%20|%20Hyper%20Beast%20(Minimal%20Wear)', opts)
-        .then(response => {
-            console.log(response.data);
-            var json = response.data;
-            var plt = {};
-            for (var i = 0; i < json.prices.length; i++) {
-                plt[i] = json.prices[i][1];
-            }
-            console.log(plt);
-            res.render("itemDetails", { xAxis: Object.keys(plt), yAxis: Object.values(plt),username: req.user.username });
-        })
-        .catch(err => console.log(err));
+    var game = req.query.game;
+    var name = req.query.name;
+    name = decodeURI(name).replace("[dot]",".");
+    console.log(name);
+    var data = cache.get(game)[name];
+    if (data === undefined) {
+        res.render("404");
+        return;
+    }
+    var plt = {};
+    for (var i = 0; i < data.length; i++) {
+        plt[i] = data[i][1];
+    }
+    res.render("itemDetails", { 
+        xAxis: Object.keys(plt), 
+        yAxis: Object.values(plt), 
+        name: name
+    });
 });
 
 // Robin additions:
@@ -155,15 +167,4 @@ if (port == null || port == "") {
 
 app.listen(port, function () {
     console.log("Server has started successfully at port 8080");
-    const query = priceHistory.find();
-    query.exec(function (err, docs) {
-        if (err) console.log(err);
-        else {
-            for (var doc of docs) {
-                if (doc.gameName !== null){
-                    addToCache(doc.gameName, doc.data);
-                } 
-            }
-        }
-    });
 });
