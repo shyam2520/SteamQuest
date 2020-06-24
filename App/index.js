@@ -169,6 +169,10 @@ app.get("/search", function (req, res) {
     }
 })
 
+app.get("/loading", function (req, res) {
+        res.render("loading");
+})
+
 app.get('*', function(req, res){
     if(req.user==null){
         res.render("404");
