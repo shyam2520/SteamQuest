@@ -8,7 +8,6 @@ import path from 'path';
 import mongoose from 'mongoose';
 import gridfs from 'gridfs-stream';
 import NodeCache from 'node-cache';
-import sock from 'socket.io';
 
 dotenv.config();
 
@@ -83,17 +82,6 @@ var server = app.listen(port, function () {
     console.log("Server has started successfully at port 8080");
 });
 
-var io = sock.listen(server);
-// app.get('/', (req, res) => {
-//     res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
-// });
-
-io.sockets.on('connection', function (socket) {
-    socket.on('hi', data => {
-        console.log('hi');
-    });
-});
-
 app.get('/', (req, res) => {
     if(req.user==null){
         res.render("home");
@@ -124,20 +112,25 @@ app.get('/data', (req, res) => {
     var name = req.query.name;
     name = decodeURI(name);
     console.log(name);
+    res.render('itemDetails', { name: name, game: game });
+});
+
+app.post('/fetchData', (req, res) => {
+    console.log(req.body);
+    var name = req.body.name;
+    var game = req.body.game;
     var data = cache.get(game)[name];
-    if (data === undefined) {
-        res.render("404");
-        return;
-    }
     var plt = {};
     for (var i = 0; i < data.length; i++) {
         plt[i] = data[i][1];
     }
-    res.render("itemDetails", { 
+    var result = { 
         xAxis: Object.keys(plt), 
         yAxis: Object.values(plt), 
         name: name
-    });
+    }
+    console.log(result);
+    res.json(result);
 });
 
 // Robin additions:
