@@ -8,8 +8,15 @@ import path from 'path';
 import mongoose from 'mongoose';
 import gridfs from 'gridfs-stream';
 import NodeCache from 'node-cache';
+import sock from 'socket.io';
 
 dotenv.config();
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8080;
+}
+
 mongoose.connect(process.env.MONGO_URL, { 
     useNewUrlParser: true, 
     useFindAndModify: false,
@@ -72,9 +79,20 @@ app.use(steam.middleware({
     apiKey: process.env.STEAM_API_KEY,
 }));
 
+var server = app.listen(port, function () {
+    console.log("Server has started successfully at port 8080");
+});
+
+var io = sock.listen(server);
 // app.get('/', (req, res) => {
 //     res.send(req.user == null ? 'not logged in' : 'hello ' + req.user.username).end();
 // });
+
+io.sockets.on('connection', function (socket) {
+    socket.on('hi', data => {
+        console.log('hi');
+    });
+});
 
 app.get('/', (req, res) => {
     if(req.user==null){
@@ -104,7 +122,7 @@ app.get('/logout', steam.enforceLogin('/'), (req, res) => {
 app.get('/data', (req, res) => {
     var game = req.query.game;
     var name = req.query.name;
-    name = decodeURI(name).replace("[dot]",".");
+    name = decodeURI(name);
     console.log(name);
     var data = cache.get(game)[name];
     if (data === undefined) {
@@ -159,12 +177,3 @@ app.get('*', function(req, res){
         res.render("404", { username: req.user.username});
     }
   });
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 8080;
-}
-
-app.listen(port, function () {
-    console.log("Server has started successfully at port 8080");
-});

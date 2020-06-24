@@ -3,6 +3,7 @@ html
         title SteamQuest
         include libraries
         script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css")
     body
         header
@@ -51,7 +52,9 @@ html
         div.container.wow.fadeInLeft(data-wow-duration='1.2s', data-wow-delay='.4s',style="background-color:black;")
             div(style="position: relative; height:75%;")
                 canvas(id="myChart", width="200", height="200")
-        script. 
+        script.
+            var socket = io();
+            socket.emit('hi');
             var xLabels = [#{xAxis}];
             var yLabels = [#{yAxis}];
             var ctx = document.getElementById('myChart').getContext('2d');
