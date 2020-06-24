@@ -10,7 +10,6 @@ npm install
  
  | Variable name      | Description                                                                |
  | ------------------ | -------------------------------------------------------------------------- |
- | STEAM_LOGIN_SECURE | steamLoginSecure cookie from your browser after signing into steam         |
  | MONGO_URL          | Your MongoDB connection string                                             |
  | STEAM_API_KEY      | Get your own API KEY from [here](https://steamcommunity.com/dev/apikey)    |
  | REALM              | your base URL (```http://localhost:8080/``` if you are running it locally) |
