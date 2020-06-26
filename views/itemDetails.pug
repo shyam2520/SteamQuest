@@ -137,7 +137,7 @@ html
                               </div>
                             </div>
                           </footer>`;
-            $.post('/fetchData', { name: '#{name}', game: '#{game}' }, function (data, status) {
+            $.post('/fetchData', { name: `#{name}`, game: `#{game}` }, function (data, status) {
               if (data.status === 404) {
                 location.href = '/notfound';
               }

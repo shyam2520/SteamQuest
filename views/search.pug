@@ -5,6 +5,7 @@ html
     include libraries
     link(rel='stylesheet', href='css/search.css')
     link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU' crossorigin='anonymous')
+    script(src="js/search.js")
   body
     header
       .header-area(style='background-color: black;')
@@ -73,9 +74,10 @@ html
                 br
                 br
                 br
-                form(action='/data')
-
-                    input(type='search' name='search-request-pubg' id='search-request-pubg' placeholder='Search PUBG item')
+                form(autocomplete='off' method='GET' action='/data')
+                  .autocomplete
+                    input(type="hidden" name='game' value='PUBG')
+                    input(type='search' name='name' id='search-request-pubg' placeholder='Search PUBG item')
                     button(type='submit' style='background:transparent; border:none; color:transparent;')
                       i.fa.fa-search
           .col-xl-4.col-md-4
@@ -158,6 +160,11 @@ html
                 script.
                   document.write(new Date().getFullYear());
                 |  All rights reserved
+    script.
+      var pubgNames = `#{PUBG}`.split(',');
+      console.log(pubgNames);
+      autocomplete(document.getElementById("search-request-pubg"), pubgNames);
+
 
 include scripts
 

@@ -167,7 +167,13 @@ app.get("/search", function (req, res) {
         res.send("Login First");
     }
     else{
-    res.render("search", { username: req.user.username,profile:req.user.avatar.large});
+        var pubgNames = Array.from(cacheMap.get('PUBG').keys());
+        console.log(pubgNames); 
+        res.render("search", { 
+            username: req.user.username, 
+            profile:req.user.avatar.large, 
+            PUBG: pubgNames
+        });
     }
 })
 
