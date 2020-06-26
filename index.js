@@ -118,12 +118,22 @@ app.post('/fetchData', (req, res) => {
     console.log(req.body);
     var name = req.body.name;
     var game = req.body.game;
-    var data = cacheMap.get(game).get(name);
+    var gameDetails = cacheMap.get(game);
+    if (gameDetails === undefined) {
+        res.json({ status: 404 });
+        return;
+    }
+    var data = gameDetails.get(name);
+    if (data === undefined) {
+        res.json({ status: 404 });
+        return;
+    }
     var plt = {};
     for (var i = 0; i < data.length; i++) {
         plt[i] = data[i][1];
     }
-    var result = { 
+    var result = {
+        status: 200, 
         xAxis: Object.keys(plt), 
         yAxis: Object.values(plt), 
         name: name
@@ -164,6 +174,10 @@ app.get("/search", function (req, res) {
 app.get("/loading", function (req, res) {
         res.render("loading");
 })
+
+app.get('/notfound', (req, res) => {
+    res.render("404");
+}); 
 
 app.get('*', function(req, res){
     if(req.user==null){
