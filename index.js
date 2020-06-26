@@ -7,7 +7,6 @@ import dotenv from 'dotenv';
 import path from 'path';
 import mongoose from 'mongoose';
 import gridfs from 'gridfs-stream';
-// import NodeCache from 'node-cache';
 
 dotenv.config();
 
@@ -58,19 +57,6 @@ const readFromDB = (name) => {
     });
 }
 
-// const cache = new NodeCache({ stdTTL: 6 * 60 * 60, checkperiod: 10, deleteOnExpire: false });
-// cache.on( "expired", function( key, value ){ // once cache gets outdated, we must update it
-//     console.log(key + ' has expired in cache, fetching values again...');
-//     readFromDB('PUBG');
-// });
-
-// const addToCache = (key, value) => {
-//     return new Promise(resolve => {
-//         console.log('Loading ' + key + ' data to cache...');
-//         cache.set(key, value);
-//         console.log('Done: ' + key);
-//     });
-// }
 const __dirname = path.resolve();
 const app = express();
 
