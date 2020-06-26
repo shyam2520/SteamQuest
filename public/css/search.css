@@ -34,6 +34,8 @@ input{
     font-size: 1em;
     border-radius: 20px;
     padding: 0 20px;
+    color: cornsilk;
+    background-color: black;
 }
 
 .fa{
@@ -51,16 +53,17 @@ input{
     transition: all 1s;
 }
 
-form:hover{
+form{
     width: 110%;
     cursor: pointer;
+
 }
 
-form:hover input{
+form input{
     display: block;
 }
 
-form:hover .fa{
+form .fa{
     background: #27b5c2;
     color: white;
 }

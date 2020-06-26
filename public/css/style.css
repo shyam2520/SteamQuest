@@ -1894,12 +1894,14 @@ h3 {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
+  border-width: 1.5px;
   padding: 20px 16px;
   margin-bottom: 25px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: #000;
+  color: rgb(189, 189, 189);
   font-weight: 400;
+  background-color: #121212;
 }
 
 /* line 21 SteamQuest/HTML/scss/_getIn_tauch.scss */
