@@ -1663,6 +1663,7 @@ h3 {
 .service_area {
   padding-top: 155px;
   padding-bottom: 130px;
+  background-color: #121212;
 }
 
 @media (max-width: 767px) {
@@ -1705,7 +1706,7 @@ h3 {
 .service_area .single_service h3 {
   font-size: 24px;
   font-weight: 400;
-  color: #1F1F1F;
+  color: #ffffff;
   margin-top: 29px;
   margin-bottom: 13px;
 }
@@ -1742,6 +1743,7 @@ h3 {
   .team_area {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color:#121212;
   }
 }
 
@@ -1846,7 +1848,7 @@ h3 {
 .team_area .single_team .team_title h3 {
   font-size: 20px;
   font-family: "Roboto", sans-serif;
-  color: #1F1F1F;
+  color: #ffffff;
   font-weight: 400;
   margin-bottom: 7px;
 }
@@ -1856,7 +1858,7 @@ h3 {
   font-size: 16px;
   margin-bottom: 0;
   font-weight: 400;
-  color: #707070;
+  color: #b9b7b7;
   font-family: "Muli", sans-serif;
 }
 
@@ -1873,6 +1875,7 @@ h3 {
 .get_in_tauch_area {
   padding-top: 146px;
   padding-bottom: 160px;
+  background-color: #121212;
 }
 
 @media (max-width: 767px) {

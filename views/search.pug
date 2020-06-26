@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='css/search.css')
     link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU' crossorigin='anonymous')
     script(src="js/search.js")
-  body
+  body(style='background-color:#121212')
     header
       .header-area(style='background-color: black;')
         .main-header-area
@@ -40,10 +40,10 @@ html
     br
     br
     br  
-    .jumbotron.jumbotron-fluid.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.1s',style='background-color:white;text-align:center;')
+    .jumbotron.jumbotron-fluid.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.1s',style='background-color:#121212;text-align:center;')
       .container
         h1.display-4
-            span Hello #{ username }
+            span(style='color:white') Hello #{ username }
         img.rounded-circle(src=img height='100' width='100')
         br
         br

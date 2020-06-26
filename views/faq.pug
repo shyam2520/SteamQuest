@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='css/faqbeauty.css')
     include libraries
 
-  body
+  body(style='background-color:#121212')
     header
       .header-area(style='background-color: black;')
         .main-header-area
@@ -21,7 +21,7 @@ html
                   nav
                     ul#navigation
                       li
-                        a.active(href='/') home
+                        a.active(href='/' ) home
                       li
                         a(href='/#servicestag') services
                       li
@@ -46,17 +46,17 @@ html
     section.cd-faq.js-cd-faq.container.max-width-md.margin-top-lg.margin-bottom-lg
         ul.cd-faq__categories
           li.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.1s')
-            a.cd-faq__category.cd-faq__category-selected.truncate(href='#basics') Basics
+            a.cd-faq__category.cd-faq__category-selected.truncate(href='#basics',style='color:rgb(235, 231, 231)') Basics
           li.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.2s')
-            a.cd-faq__category.truncate(href='#items') Items
+            a.cd-faq__category.truncate(href='#items' ,style='color:rgb(235, 231, 231)') Items
           li.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.3s')
-            a.cd-faq__category.truncate(href='#account') Steam Account
+            a.cd-faq__category.truncate(href='#account',style='color:rgb(235, 231, 231)') Steam Account
           li.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.4s')
-            a.cd-faq__category.truncate(href='#predictions') Predictions
+            a.cd-faq__category.truncate(href='#predictions',style='color:rgb(235, 231, 231)') Predictions
           li.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.5s')
-            a.cd-faq__category.truncate(href='#inspiration') inspiration
+            a.cd-faq__category.truncate(href='#inspiration',style='color:rgb(235, 231, 231)') inspiration
           li.wow.fadeInLeft(data-wow-duration='1s', data-wow-delay='.6s')
-            a.cd-faq__category.truncate(href='#future') Future
+            a.cd-faq__category.truncate(href='#future',style='color:rgb(235, 231, 231)') Future
         // cd-faq__categories
         .cd-faq__items
           ul#basics.cd-faq__group.wow.fadeInRight(data-wow-duration='1.2s', data-wow-delay='.7s')

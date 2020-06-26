@@ -95,13 +95,15 @@ hr {
 	padding: 0;
 	border: 0
 }
-
+span{
+	color:rgb(235, 231, 231);
+}
 html {
 	box-sizing: border-box
 }
 
 body {
-	background-color: hsl(0, 0%, 100%);
+	background-color:#121212;
 	background-color: var(--color-bg, white)
 }
 
@@ -179,7 +181,7 @@ svg {
 }
 
 [data-theme] {
-	background-color: hsl(0, 0%, 100%);
+	background-color:#121212;
 	background-color: var(--color-bg, #fff);
 	color: hsl(240, 4%, 20%);
 	color: var(--color-contrast-high, #313135)
@@ -1381,7 +1383,7 @@ u,
 .btn--primary {
 	background-color: hsl(220, 90%, 56%);
 	background-color: var(--color-primary, #2a6df4);
-	color: hsl(0, 0%, 100%);
+	color:#121212;
 	color: var(--color-white, #fff)
 }
 
@@ -1395,7 +1397,7 @@ u,
 .btn--accent {
 	background-color: hsl(355, 90%, 61%);
 	background-color: var(--color-accent, #f54251);
-	color: hsl(0, 0%, 100%);
+	color:#121212;
 	color: var(--color-white, #fff)
 }
 
@@ -1424,7 +1426,7 @@ u,
 }
 
 .form-control {
-	background-color: hsl(0, 0%, 100%);
+	background-color:#121212;
 	background-color: var(--color-bg, #f2f2f2);
 	padding-top: 0.5em;
 	padding-top: var(--form-control-padding-y, 0.5em);
@@ -1481,7 +1483,7 @@ u,
 .form__msg-error {
 	background-color: hsl(355, 90%, 61%);
 	background-color: var(--color-error, #f54251);
-	color: hsl(0, 0%, 100%);
+	color:#121212;
 	color: var(--color-white, #fff);
 	font-size: 0.83333em;
 	font-size: var(--text-sm, 0.833em);
@@ -3276,7 +3278,7 @@ u,
 	--color-black-h: 240;
 	--color-black-s: 8%;
 	--color-black-l: 12%;
-	--color-white: hsl(0, 0%, 100%);
+	--color-white:#121212;
 	--color-white-h: 0;
 	--color-white-s: 0%;
 	--color-white-l: 100%;
@@ -3340,7 +3342,7 @@ u,
 	--color-warning-lighter-h: 46;
 	--color-warning-lighter-s: 100%;
 	--color-warning-lighter-l: 81%;
-	--color-bg: hsl(0, 0%, 100%);
+	--color-bg:#121212;
 	--color-bg-h: 0;
 	--color-bg-s: 0%;
 	--color-bg-l: 100%;
@@ -3531,7 +3533,7 @@ mark {
 	--cd-color-3-h: 210;
 	--cd-color-3-s: 14%;
 	--cd-color-3-l: 49%;
-	--cd-color-4: hsl(0, 0%, 100%);
+	--cd-color-4:#121212;
 	--cd-color-4-h: 0;
 	--cd-color-4-s: 0%;
 	--cd-color-4-l: 100%;
@@ -3594,7 +3596,7 @@ mark {
 	line-height: 50px;
 	padding: 0 2em 0 1.05em;
 	padding: 0 var(--space-lg) 0 calc(var(--space-sm)*1.4);
-	color: hsl(0, 0%, 100%);
+	color:#121212;
 	color: var(--cd-color-4);
 	background-color: hsl(213, 7%, 33%);
 	background-color: var(--cd-color-1);
@@ -3684,7 +3686,7 @@ li:last-child .cd-faq__category {
 	width: 90%;
 	top: 0;
 	right: 0;
-	background: hsl(0, 0%, 100%);
+	background:#121212;
 	background: var(--cd-color-4);
 	padding: 0 1.25em 1.25em;
 	padding: 0 var(--component-padding) var(--space-md);
@@ -3760,7 +3762,6 @@ html:not(.js) .cd-faq__group,
 	color: hsl(240, 1%, 74.7%);
 	color: hsl(var(--color-contrast-low-h), var(--color-contrast-low-s), calc(var(--color-contrast-low-l)*0.9))
 }
-
 @media (min-width: 64rem) {
 	.cd-faq__title {
 		margin-bottom: 0.75em;
@@ -3774,7 +3775,8 @@ html:not(.js) .cd-faq__group,
 
 @media (min-width: 64rem) {
 	.cd-faq__item {
-		background: hsl(0, 0%, 100%);
+		background:#121212;
+		color:white;
 		background: var(--cd-color-4);
 		margin-bottom: 0.25em;
 		margin-bottom: var(--space-xxxs);
@@ -3785,6 +3787,7 @@ html:not(.js) .cd-faq__group,
 		--box-shadow: hsla(210, 14%, 49%, 0.3);
 		--box-shadow: hsla(var(--cd-color-3-h), var(--cd-color-3-s), var(--cd-color-3-l), 0.3);
 		box-shadow: undefined;
+		color:white;
 		box-shadow: 0 1px 10px var(--box-shadow)
 	}
 	@media (min-width: 64rem) {
@@ -3990,7 +3993,7 @@ body {
 	font-size: 1.728em;
 	font-size: var(--text-xl);
 	font-weight: 300;
-	color: hsl(0, 0%, 100%);
+	color:#121212;
 	color: var(--cd-color-4);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale
