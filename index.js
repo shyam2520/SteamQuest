@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import mongoose from 'mongoose';
 import gridfs from 'gridfs-stream';
-import NodeCache from 'node-cache';
+// import NodeCache from 'node-cache';
 
 dotenv.config();
 
@@ -26,7 +26,13 @@ gridfs.mongo = mongoose.mongo;
 var connection = mongoose.connection;
 connection.once('open', function callback () {
     readFromDB('PUBG');
+    setInterval(() => {
+        readFromDB('PUBG');
+        console.log('Cache refreshed.')
+    }, 6 * 60 * 60 * 1000); // refresh our mapCache every 6 hrs
 });
+
+var cacheMap = new Map();
 
 const readFromDB = (name) => {
     var buffer = "";
@@ -41,23 +47,30 @@ const readFromDB = (name) => {
     // dump contents to console when complete
     readStream.on("end", function () {
         console.log("Successfully read GridFS file");
-        addToCache(name, JSON.parse(buffer));
+        //addToCache(name, JSON.parse(buffer));
+        var temp = new Map();
+        buffer = JSON.parse(buffer);
+        for (var key of Object.keys(buffer)) {
+            temp.set(key, buffer[key]);
+        }
+        cacheMap.set(name, temp);
+        console.log(cacheMap);
     });
 }
 
-const cache = new NodeCache({ stdTTL: 6 * 60 * 60, checkperiod: 10, deleteOnExpire: false });
-cache.on( "expired", function( key, value ){ // once cache gets outdated, we must update it
-    console.log(key + ' has expired in cache, fetching values again...');
-    readFromDB('PUBG');
-});
+// const cache = new NodeCache({ stdTTL: 6 * 60 * 60, checkperiod: 10, deleteOnExpire: false });
+// cache.on( "expired", function( key, value ){ // once cache gets outdated, we must update it
+//     console.log(key + ' has expired in cache, fetching values again...');
+//     readFromDB('PUBG');
+// });
 
-const addToCache = (key, value) => {
-    return new Promise(resolve => {
-        console.log('Loading ' + key + ' data to cache...');
-        cache.set(key, value);
-        console.log('Done: ' + key);
-    });
-}
+// const addToCache = (key, value) => {
+//     return new Promise(resolve => {
+//         console.log('Loading ' + key + ' data to cache...');
+//         cache.set(key, value);
+//         console.log('Done: ' + key);
+//     });
+// }
 const __dirname = path.resolve();
 const app = express();
 
@@ -78,7 +91,7 @@ app.use(steam.middleware({
     apiKey: process.env.STEAM_API_KEY,
 }));
 
-var server = app.listen(port, function () {
+app.listen(port, function () {
     console.log("Server has started successfully at port 8080");
 });
 
@@ -119,7 +132,7 @@ app.post('/fetchData', (req, res) => {
     console.log(req.body);
     var name = req.body.name;
     var game = req.body.game;
-    var data = cache.get(game)[name];
+    var data = cacheMap.get(game).get(name);
     var plt = {};
     for (var i = 0; i < data.length; i++) {
         plt[i] = data[i][1];
