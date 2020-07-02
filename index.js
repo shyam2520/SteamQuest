@@ -25,8 +25,10 @@ gridfs.mongo = mongoose.mongo;
 var connection = mongoose.connection;
 connection.once('open', function callback () {
     readFromDB('PUBG');
+    readFromDB('CSGO');
     setInterval(() => {
         readFromDB('PUBG');
+        readFromDB('CSGO');
         console.log('Cache refreshed.')
     }, 6 * 60 * 60 * 1000); // refresh our mapCache every 6 hrs
 });
@@ -54,6 +56,7 @@ const readFromDB = (name) => {
         }
         cacheMap.set(name, temp);
         console.log(cacheMap);
+        console.log('Successfully read ' + name);
     });
 }
 
@@ -168,11 +171,12 @@ app.get("/search", function (req, res) {
     }
     else{
         var pubgNames = Array.from(cacheMap.get('PUBG').keys());
-        console.log(pubgNames); 
+        var csgoNames = Array.from(cacheMap.get('CSGO').keys());
         res.render("search", { 
             username: req.user.username, 
             profile:req.user.avatar.large, 
-            PUBG: pubgNames
+            PUBG: pubgNames,
+            CSGO: csgoNames
         });
     }
 })
