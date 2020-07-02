@@ -92,8 +92,9 @@ html
                 br
                 br
                 form(action='/data')
-
-                    input(type='search' name='search-request-cs' id='search-request-cs' placeholder='Search CS:GO item')
+                  .autocomplete
+                    input(type="hidden" name='game' value='CSGO')
+                    input(type='search' name='name' id='search-request-cs' placeholder='Search CS:GO item')
                     button(type='submit' style='background:transparent; border:none; color:transparent;')
                       i.fa.fa-search
           .col-xl-4.col-md-4(style='z-index:10;')
@@ -163,8 +164,9 @@ html
                 |  All rights reserved
     script.
       var pubgNames = `#{PUBG}`.split(',');
-      console.log(pubgNames);
+      var csgoNames = `#{CSGO}`.split(',');
       autocomplete(document.getElementById("search-request-pubg"), pubgNames);
+      autocomplete(document.getElementById("search-request-cs"), csgoNames);
 
 
 include scripts
