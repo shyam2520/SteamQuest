@@ -86,13 +86,16 @@ form .fa{
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
+    z-index: 99;
 }
 .autocomplete-items div:hover {
     /*when hovering an item:*/
     background-color: #e9e9e9;
+    z-index: 99;
 }
 .autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
+    z-index: 99;
 }

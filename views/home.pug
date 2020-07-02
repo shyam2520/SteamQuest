@@ -56,13 +56,13 @@ html
                   else
                     | Hello #{ username }  
                 if username
-                    a.steambutton(href='/search')
+                    a.steambutton.wow.fadeInRight(data-wow-duration='1s', data-wow-delay='.1s',href='/search')
                      span Search
                      .icon
                         i.fa.fa-search
                     
                 else
-                    a.steambutton(href='/authenticate')
+                    a.steambutton.wow.fadeInRight(data-wow-duration='1s', data-wow-delay='.1s',href='/authenticate')
                      span Login With Steam
                      .icon
                         i.fa.fa-steam-square
