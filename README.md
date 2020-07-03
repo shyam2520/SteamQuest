@@ -1,5 +1,7 @@
-# SteamQuest
+# SteamQuest - ```next```
 A web app to analyze and predict steam community market prices.
+
+**This branch has upcoming changes and beta features. Kinda stable, but a lil resource-intensive.**
 
 ## Setting up the environment
 ```
